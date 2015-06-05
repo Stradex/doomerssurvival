@@ -1,0 +1,107 @@
+#library "funcs"
+
+function int absval(int val)
+{
+	int tval = val;
+	if (tval < 0)
+		tval = -tval;
+	return tval;
+}
+
+function int distPoints(int x1, int y1, int z1, int x2, int y2, int z2)
+{
+	int i;
+	x1 = x1 >> 16;
+	y1 = y1 >> 16;
+	z1 = z1 >> 16;
+	x2 = x2 >> 16;
+	y2 = y2 >> 16;
+	z2 = z2 >> 16;
+	int acDis = absval(x1-x2);
+	if (acDis > absval(y1-y2))
+			acDis = absval(y1-y2);
+	if (acDis > absval(z1-z2))
+			acDis = absval(z1-z2);
+	return acDis;
+}
+
+function int distMax(int x1, int y1, int z1, int x2, int y2, int z2)
+{
+	int i;
+	x1 = x1 >> 16;
+	y1 = y1 >> 16;
+	z1 = z1 >> 16;
+	x2 = x2 >> 16;
+	y2 = y2 >> 16;
+	z2 = z2 >> 16;
+	int acDis = absval(x1-x2);
+	if (acDis < absval(y1-y2))
+			acDis = absval(y1-y2);
+	if (acDis < absval(z1-z2))
+			acDis = absval(z1-z2);
+	return acDis;
+}
+
+
+int GiveTID = -32767;
+
+function int NextTID (void)
+{
+    for ( ; GiveTID < 0; GiveTID++)
+    {
+        if (!ThingCount (T_NONE, GiveTID))
+            return GiveTID;
+    }
+    return 0;
+}
+
+function int typeDamage(int val)
+{
+	int damage = 2;
+	switch (val)
+	{
+		case IMPBALLDAMAGE:
+			damage = 2;
+		break;
+		case CACOBALLDAMAGE:
+			damage = 5;
+		break;
+		case MANCUBALLDAMAGE:
+			damage = 10;
+		break;
+		case BARONBALLDAMAGE:
+			damage = 8;
+		break;
+		case ARCHBALLDAMAGE:
+			damage = 7;
+		break;
+		case REVBALLDAMAGE:
+			damage = 8;
+		break;
+		case CYBERBALLDAMAGE:
+			damage = 25;
+		break;
+	}
+	return damage;
+}
+function str FoundArmorType (int tid)
+{
+  bool found_armor;
+  int nPlayer = tid-1000;
+  int ArmorType=-1;
+  int armorunits = CheckActorInventory(tid, "Armor");
+  if (CheckActorInventory(tid, "Armor")) // If player has at least 1 armor point, proceed to check the type...
+  {
+    for (int i; i<ARMORTYPES; i++)
+    {
+      if (GetArmorType(armor_types[i], nPlayer))
+      {
+        found_armor = TRUE;
+		ArmorType = i;
+        break;
+      }
+    }
+  }
+   HudMessage(s: "Armor: ", d:armorunits; HUDMSG_PLAIN, 1, CR_RED, 0.1, 0.9, 1.0);
+  return ArmorType;
+}

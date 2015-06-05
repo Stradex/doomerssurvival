@@ -1,0 +1,111 @@
+#library "definitions.acs"
+/*A partirde ahora, hasta la version 0.6, solamente
+dedicate a pulir y mejorar el codigo*/
+
+#libdefine MAXPLAYERS		32
+//Poderes disponibles
+#libdefine SPEEDPOWER 		0
+#libdefine JUMPPOWER 		1
+#libdefine REGENERATEPOWER	2
+#libdefine KAMIKAZEPOWER 	3
+#libdefine REGENERATEAMMO 	4
+#libdefine SUPERWEAPONS 	5
+#libdefine TELEPORTPOWER 	6
+#libdefine DAMAGEPOWER	  	7
+#libdefine RESURRECTPOWER	8
+#libdefine SUPERMARINE		9
+#libdefine INVESCUDO		10
+//Modos de juego: 
+#libdefine	NORMALMODE		0
+#libdefine NIGHTMAREMODE	1
+#libdefine SPEEDRUNMODE	2
+#libdefine PAREJASMODE		3
+#libdefine THEKINGMODE		4
+#libdefine VANILLAMODE		5
+#libdefine NOHEALTHMODE	6
+#libdefine PROMEDIOMODE	7
+#libdefine UNITMINSIZE		100
+//Ammo slots
+#libdefine C_SLOT2 200
+#libdefine C_SLOT3 50
+#libdefine C_SLOT5 50
+#libdefine C_SLOT6 300
+
+//Otras variables
+#libdefine SPEEDRUNTIME	300
+#libdefine KMMISSILES		20
+#libdefine KMBFG			6
+#libdefine KMZTIMES			6
+
+//scripts
+
+#libdefine PODERES			701
+#libdefine KILLALL			702
+#libdefine TELPOINT 		988
+#libdefine TIMECOUNT		703
+#libdefine QUITARRUNAS		704
+#libdefine SETPOWERS		705
+#libdefine KAMIKAZEPW		706
+
+//IDs de los mensajes
+#libdefine PAREJAMSG		100
+#libdefine KINGMSG			101
+#libdefine TIMEMSG			102
+#libdefine MODEMSG			103
+#libdefine PODERMSG		104
+
+//Tipos de damage 
+#libdefine IMPBALLDAMAGE	0
+#libdefine CACOBALLDAMAGE	1
+#libdefine MANCUBALLDAMAGE	2
+#libdefine BARONBALLDAMAGE	3
+#libdefine ARCHBALLDAMAGE	4
+#libdefine REVBALLDAMAGE	5
+#libdefine CYBERBALLDAMAGE	6
+
+
+/*
+	.:Poderes:.
+	
+	Speedpower: 	 Da velocidad (la mitad más rapido)
+	Jumppower: 		 Da poder de super salto (con ACS, no skulltag)
+	Regeneratepower: Da poder de regeneracion (con ACS no con skulltag)
+	¡No usar todavía! ->Kamikazepower   : Da poder de muerte kamikaze (solo usar en survvial a 1 vida)
+	Regenarteammo   : Da poder de regeneracion de MUNICIONES
+	Superweapons	: Da poder de armas con disparo triple (SpreadRune)
+	Teleportpower	: Da poder de teletransportacion (Click izquierdo y click derecho)
+	Damagepower		: Da poder de daño con skulltag (StrengthRune)
+	Resurrectpower	: Como el resurrect de blazkowitz, te envia donde comenzaste el mapa y te devuelve la vida... solo una vida extra
+	Supermarine		: Speedpower + Damagepower + Regeneratepower
+	
+	
+	.:Modos de juego:.
+	NORMALMODE		: Es el modo de juego normal (con los poderes)
+	NIGHTMAREMODE	: Es el modo nightmare del Doom 3, si los jugadores tienen más de 25 de vida, su vida se va reduciendo hasta llegar a ese tope.
+	SPEEDRUNMODE	: Los jugadores tienen 5 minutos para terminar el mapa, sino todos se mueren.
+	PAREJASMODE		: Cada jugador tiene una pareja asignada (en caso de ser impar los jugadores, alguno queda sin pareja), si su pareja se muere, el tambien muere.
+	THEKINGMODE		: Todos tienen que evitar que el jugador elegido como "El rey" se muera, si el muere, todos mueren.
+	VANILLAMODE		: Es modo vanilla del doom, sin poderes ni nada raro.
+	NOHEALTHMODE	: En este modo los jugadores nunca pueden incrementar su vida
+					  (aunque agarren botiquines o lo que fuera, su vida no aumentara [si aumenta vuelve a la que era menor])
+	PROMEDIOMODE	: Todos tienen 1 minuto para matar al marine Promedio, sino todos se mueren menos el.
+*/
+
+
+#define ARMORTYPES	4
+
+str armor_types[ARMORTYPES] = {
+  "ArmorBonus",
+  "GreenArmor",
+  "BlueArmor",
+  "BlueArmorForMegasphere"
+};
+
+str armor_messages[6] = {
+  "You are unarmored, but have found armor bonuses.",
+  "You are wearing security armor.",
+  "You are wearing combat armor.",
+  "You have a megasphere.",
+  "What the hell are you wearing?",
+  "You are unarmored."
+};

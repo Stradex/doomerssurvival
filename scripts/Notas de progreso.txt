@@ -1,0 +1,41 @@
+/*
+
+v.04:
+{
+
+	1. Hay que editar el teleport para usarlo  como en el modo escondidas
+	(es decir que detecte directamente el input del disparo secundario desdea cs
+	sin necesidad de editar la clase de cada arma... haciendo que este sea
+	más generico)
+	
+	2. Corregir algunos bugs (modo king)
+		-Bugs corregidos: 
+			1) FIX: Health bug de Ressurect power
+			2) FIX: Teletransportación mejorada, ahora se puede usar mientras se dispara.
+			3) FIX: King mode: Si un jugador se iba y era The king, todos morian. Ahora asigna a otro de los conectados.
+			4) FIX: Cuando había respawn en modo vanilla aparecian los carteles de poderes.
+			5) FIX: El random del juego ahora es más efectivo (poderes, modos de juego, etc..)
+			6) FIX: El modo kamikaze ahora funciona (sin embargo sigue sujeto a revisión y mejora)
+			7) FIX: En modo pain ahora no funciona nada la regeneracion
+}
+
+v0.5 - los sprites (clientside, por su pollo)
+{
+	1. Armar una sprite para el campo de fuerza
+	2. Sprite de "The king" para diferenciarlo del los demas
+	3. Sprite de pareja para saber quien es
+	4. Sprite de 
+	5. Sprite de 
+	Corregir algunos bugs
+}
+
+v0.6
+{
+	1. Hay que editar el modo vanilla para... que REALMENTE SEA VANILLA.
+	2. Agregar CVAR para habilitar o deshabilitar mod, forzar determinado poder, forzar determinado
+	modo de juego y establecer la cantidad de jugadores maxima que puedan usar poderes.
+	3. Poder de "Rayos X"
+	4. Poder de "regresar" en el tiempo 10 seg atras (un solo uso)
+. Corregir algunos bugs
+}
+*/

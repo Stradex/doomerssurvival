@@ -1,0 +1,160 @@
+ACTOR DSDoomImpBall : DoomImpBall replaces DoomImpBall
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0 ACS_ExecuteAlways(500, 0, 0)
+			BAL1 AB 4 Bright
+			Loop
+		Death:
+			BAL1 CDE 6 Bright
+		Stop
+	}
+}
+
+ACTOR DSBaronBall : BaronBall replaces BaronBall
+{
+  States
+  {
+  Spawn:
+	TNT1 A 0 ACS_ExecuteAlways(500, 0, 3)
+    BAL7 AB 4 Bright
+    Loop
+  }
+}
+
+ACTOR DSArachnotronPlasma : ArachnotronPlasma replaces ArachnotronPlasma
+{
+  States
+  {
+  Spawn:
+	TNT1 A 0 ACS_ExecuteAlways(500, 0, 4)
+    APLS AB 5 Bright
+    Loop
+  }
+}
+
+ACTOR DSCacodemonBall : CacodemonBall replaces CacodemonBall
+{
+  States
+  {
+  Spawn:
+	TNT1 A 0 ACS_ExecuteAlways(500, 0, 1)
+    BAL2 AB 4 Bright
+    Loop
+  }
+}
+
+ACTOR DSRevenantTracer : RevenantTracer replaces RevenantTracer
+{
+  States
+  {
+  Spawn:
+	TNT1 A 0 ACS_ExecuteAlways(500, 0, 5)
+    FATB AB 2 Bright A_Tracer
+    Loop
+  }
+}
+ACTOR DSFatShot : FatShot replaces FatShot
+{
+  States
+  {
+  Spawn:
+  	TNT1 A 0 ACS_ExecuteAlways(500, 0, 2)
+    MANF AB 4 Bright
+    Loop
+  }
+}
+
+ACTOR "PWFist" : Fist replaces Fist
+{
+	States
+	{
+		AltFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)
+		goto Ready
+		AltAltFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)	
+		goto Ready
+		AltSPFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)		
+		goto Ready
+		AltCoopFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)
+		goto Ready
+	}
+}
+
+ACTOR "PWPistol" : Pistol replaces Pistol
+{
+	States
+	{
+		AltFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)
+		goto Ready
+		AltAltFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)	
+		goto Ready
+		AltSPFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)		
+		goto Ready
+		AltCoopFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)
+		goto Ready
+	}
+}
+
+
+ACTOR "PWShotgun" : Shotgun replaces Shotgun 
+{
+	States
+	{
+		AltFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)
+		goto Ready
+		AltAltFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)	
+		goto Ready
+		AltSPFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)		
+		goto Ready
+		AltCoopFire:
+			TNT1 A 0 ACS_ExecuteAlways(988, 0, 0)
+		goto Ready	
+	}
+}
+ACTOR "TRocket" : Rocket replaces Rocket
+{
+	States
+	{
+  Spawn:
+    TNT1 A 0 ACS_ExecuteAlways(500, 0, 6)
+    MISL A 1 Bright
+    Loop
+	}
+}
+ACTOR "DSRocket" : "TRocket"
+{
+ States
+  {
+  Spawn:
+    MISL A 1 Bright
+    Loop
+  Death:
+    MISL B 8 Bright A_Explode
+    MISL C 6 Bright
+    MISL D 4 Bright
+    Stop
+  }
+} 
+ACTOR "PWRocketLauncher" : RocketLauncher replaces RocketLauncher
+{
+	States
+	{
+		Fire:
+			MISG B 8 A_GunFlash
+			MISG B 12 A_FireCustomMissile ("DSRocket")
+			MISG B 0 A_ReFire
+		Goto Ready
+	}
+}
